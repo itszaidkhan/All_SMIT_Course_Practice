@@ -44,7 +44,8 @@ const TaskList = () => {
     useEffect(() => {
         const currentUser = auth.currentUser;
         const collectionRef = collection(db, "tasks");
-        const q = query(collectionRef, where("userId", "==", currentUser.uid));
+        const q = query(collectionRef, where("userId", "==", currentUser?.uid));
+        console.log(currentUser?.uid);
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
             const data = [];
             querySnapshot.forEach((docSnap) => {
